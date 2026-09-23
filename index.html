@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SelyxCraft</title>
+  <meta name="description" content="SelyxCraft is a Minecraft survival server with land claims, player shops, creative plots and weekly events. Java and Bedrock.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Pixelify+Sans:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/logo.webp" type="image/webp">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#modes">Skip to content</a>
+
+  <aside class="depth" aria-hidden="true">
+    <div class="depth-readout">
+      <span class="depth-y">Y <b id="depthY">110</b></span>
+      <span class="depth-name" id="depthName">Sky</span>
+    </div>
+    <div class="depth-track"><span class="depth-marker" id="depthMarker"></span></div>
+  </aside>
+
+  <header class="sky" data-stop="Sky" data-y-from="110" data-y-to="64">
+    <div class="sun" aria-hidden="true"></div>
+    <div class="cloud c1" aria-hidden="true"></div>
+    <div class="cloud c2" aria-hidden="true"></div>
+    <div class="cloud c3" aria-hidden="true"></div>
+
+    <nav class="nav wrap" aria-label="Main">
+      <a class="brand" href="#top"><img class="brand-logo" src="assets/logo.webp" alt="" width="28" height="28" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-block'}))">SelyxCraft</a>
+      <ul>
+        <li class="hide-sm"><a href="#modes">Modes</a></li>
+        <li class="hide-sm"><a href="#join">Join</a></li>
+        <li class="hide-sm"><a href="#staff">Staff</a></li>
+        <li class="hide-sm"><a href="#rules">Rules</a></li>
+        <li class="hide-sm"><a data-store href="#">Store</a></li>
+        <li><a data-discord href="#">Discord</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero wrap" id="top">
+      <img class="hero-logo" src="assets/logo.webp" alt="SelyxCraft shield logo" width="1024" height="1024">
+      <h1 class="title">Selyx<span>Craft</span></h1>
+      <p class="lede">Build a town with your friends, run a shop, dig to bedrock. Land claims keep what you build yours.</p>
+
+      <div class="ip-row">
+        <div class="ip" role="group" aria-label="Server address">
+          <code data-ip>play.selyxcraft.net</code>
+          <button class="btn btn-diamond" data-copy type="button">Copy IP</button>
+        </div>
+        <p class="status" id="status"><span class="dot" aria-hidden="true"></span><span id="statusText">Checking server…</span></p>
+      </div>
+      <p class="meta">Java &amp; Bedrock · 1.21 · No pay-to-win</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="layer" data-layer="dirt" data-stop="Grass &amp; dirt" data-y-from="64" data-y-to="56" id="modes">
+      <div class="wrap">
+        <p class="eyebrow">Y 64 · Surface</p>
+        <h2>Three ways to play</h2>
+        <div class="modes">
+          <article class="mode">
+            <canvas class="icon" data-icon="pick" width="10" height="10" aria-hidden="true"></canvas>
+            <h3>Survival</h3>
+            <p>The main world. Claim land with a golden shovel, trade at the market, and team up in towns.</p>
+            <ul class="facts">
+              <li>10,000 × 10,000 world</li>
+              <li>Player-run economy</li>
+              <li>Weekly resource world reset</li>
+            </ul>
+          </article>
+          <article class="mode">
+            <canvas class="icon" data-icon="sword" width="10" height="10" aria-hidden="true"></canvas>
+            <h3>PvP Practice</h3>
+            <p>Sharpen your combat. Queue for duels with preset kits and climb the ranked ladder.</p>
+            <ul class="facts">
+              <li>Preset kits: sword, axe, crystal</li>
+              <li>1v1 duels and ranked queue</li>
+              <li>No gear loss, instant requeue</li>
+            </ul>
+          </article>
+          <article class="mode mode-soon">
+            <canvas class="icon" data-icon="chest" width="10" height="10" aria-hidden="true"></canvas>
+            <h3>Coming soon</h3>
+            <p>More modes are in the works. Tell us what you want to play next on Discord.</p>
+            <ul class="facts">
+              <li>Vote on new modes</li>
+              <li>Announced on Discord first</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="layer" data-layer="stone" data-stop="Stone" data-y-from="56" data-y-to="0" id="join">
+      <div class="wrap">
+        <p class="eyebrow">Y 32 · Stone</p>
+        <h2>Join in under a minute</h2>
+        <div class="join">
+          <div class="edition">
+            <h3>Java Edition</h3>
+            <ol class="steps">
+              <li><span>Open Minecraft 1.21 and choose <strong>Multiplayer</strong>.</span></li>
+              <li><span>Select <strong>Add Server</strong> and paste <code data-ip>play.selyxcraft.net</code></span></li>
+              <li><span>Join, then type <code>/rtp</code> to start somewhere fresh.</span></li>
+            </ol>
+          </div>
+          <div class="edition">
+            <h3>Bedrock Edition</h3>
+            <ol class="steps">
+              <li><span>Open <strong>Play</strong>, then the <strong>Servers</strong> tab.</span></li>
+              <li><span>Select <strong>Add Server</strong>. Address <code data-ip>play.selyxcraft.net</code>, port <code data-port>19132</code></span></li>
+              <li><span>Join, then type <code>/rtp</code> to start somewhere fresh.</span></li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="staff" id="staff">
+          <h2>Meet the team</h2>
+          <ul class="staff-list" id="staffList"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="layer" data-layer="deepslate" data-stop="Deepslate" data-y-from="0" data-y-to="-59" id="rules">
+      <div class="wrap rules-grid">
+        <div>
+          <p class="eyebrow">Y -32 · Deepslate</p>
+          <h2>House rules</h2>
+          <ul class="rules">
+            <li><strong>Don't grief or steal.</strong> Unclaimed doesn't mean unowned.</li>
+            <li><strong>No hacked clients or x-ray.</strong> Minimaps and performance mods are fine.</li>
+            <li><strong>Keep chat friendly.</strong> No slurs, spam, or advertising other servers.</li>
+            <li><strong>One account per person.</strong> Alts can't join events or vote.</li>
+          </ul>
+        </div>
+        <div class="discord">
+          <h3>Questions, appeals, build contests</h3>
+          <p>It all happens on Discord. Staff answer tickets there, usually within a day.</p>
+          <p class="discord-count" id="discordCount" hidden></p>
+          <div class="cta-row">
+            <a class="btn btn-gold" data-discord href="#">Join the Discord</a>
+            <a class="btn btn-diamond" data-store href="#">Visit the store</a>
+          </div>
+          <p class="store-note">Store items are cosmetic. They never give a gameplay advantage.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="layer" data-layer="bedrock" data-stop="Bedrock" data-y-from="-59" data-y-to="-64">
+    <div class="wrap footer">
+      <p class="eyebrow">Y -64 · Bedrock</p>
+      <p class="bottom">You dug all the way down. <a href="#top">Back to the surface</a></p>
+      <p class="legal">© 2026 SelyxCraft. Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
