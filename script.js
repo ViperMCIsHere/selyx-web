@@ -1,11 +1,16 @@
 // Edit these to match your server.
 const CONFIG = {
-  ip: "play.selyxcraft.net",
+  // Flip to true on launch day. Until then the IP stays hidden and people are sent to Discord.
+  launched: false,
+  ip: "play.selyxcraft.net", // not final yet
   bedrockPort: 19132,
+  version: "26.2+",
+  season: "Season 1",
   discord: "https://discord.gg/nEG4y3jYS",
   // Server Settings > Widget > enable "Server Widget", then copy the Server ID here.
   discordServerId: "1487776533203517460",
-  store: "https://your-store.tebex.io",
+  // Leave empty until the store is live; the site shows "Store coming soon" instead.
+  store: "",
   staff: [
     { name: "Opulince", role: "Owner & Founder", owner: true },
     { name: "Rubix_cube_xd", role: "Co-Founder" },
@@ -210,8 +215,12 @@ document.querySelectorAll("canvas[data-icon]").forEach((c) => {
 });
 
 // ---------- Config into the page ----------
-document.querySelectorAll("[data-ip]").forEach((el) => (el.textContent = CONFIG.ip));
+document.querySelectorAll("[data-prelaunch]").forEach((el) => (el.hidden = CONFIG.launched));
+document.querySelectorAll("[data-live]").forEach((el) => (el.hidden = !CONFIG.launched));
+document.querySelectorAll("[data-ip]").forEach((el) => (el.textContent = CONFIG.launched ? CONFIG.ip : "IP drops at launch"));
 document.querySelectorAll("[data-port]").forEach((el) => (el.textContent = CONFIG.bedrockPort));
+document.querySelectorAll("[data-version]").forEach((el) => (el.textContent = CONFIG.version));
+document.querySelectorAll("[data-season]").forEach((el) => (el.textContent = CONFIG.season));
 document.querySelectorAll("[data-discord]").forEach((el) => {
   el.href = CONFIG.discord;
   el.rel = "noopener";
@@ -219,14 +228,24 @@ document.querySelectorAll("[data-discord]").forEach((el) => {
 });
 
 document.querySelectorAll("[data-store]").forEach((el) => {
-  el.href = CONFIG.store;
-  el.rel = "noopener";
-  el.target = "_blank";
+  if (CONFIG.store) {
+    el.href = CONFIG.store;
+    el.rel = "noopener";
+    el.target = "_blank";
+    return;
+  }
+  // No store yet: drop it from the nav, turn buttons into a disabled label.
+  const navItem = el.closest(".nav li");
+  if (navItem) { navItem.hidden = true; return; }
+  el.removeAttribute("href");
+  el.setAttribute("aria-disabled", "true");
+  el.classList.add("btn-disabled");
+  el.textContent = "Store coming soon";
 });
 
 // ---------- Staff ----------
 const staffList = document.getElementById("staffList");
-CONFIG.staff.forEach((s) => {
+if (staffList) CONFIG.staff.forEach((s) => {
   const li = document.createElement("li");
   li.className = "staff-card";
   if (s.owner) li.dataset.owner = "";
@@ -248,8 +267,8 @@ CONFIG.staff.forEach((s) => {
 });
 
 // ---------- Discord online count ----------
-if (CONFIG.discordServerId) {
-  const countEl = document.getElementById("discordCount");
+const countEl = document.getElementById("discordCount");
+if (CONFIG.discordServerId && countEl) {
   fetch(`https://discord.com/api/guilds/${encodeURIComponent(CONFIG.discordServerId)}/widget.json`)
     .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
     .then((data) => {
@@ -261,7 +280,7 @@ if (CONFIG.discordServerId) {
 
 // ---------- Copy IP ----------
 const copyBtn = document.querySelector("[data-copy]");
-copyBtn.addEventListener("click", async () => {
+copyBtn?.addEventListener("click", async () => {
   try {
     await navigator.clipboard.writeText(CONFIG.ip);
     copyBtn.textContent = "Copied";
@@ -274,7 +293,7 @@ copyBtn.addEventListener("click", async () => {
 // ---------- Live server status ----------
 const statusEl = document.getElementById("status");
 const statusText = document.getElementById("statusText");
-fetch(`https://api.mcsrvstat.us/3/${encodeURIComponent(CONFIG.ip)}`)
+if (statusEl && CONFIG.launched) fetch(`https://api.mcsrvstat.us/3/${encodeURIComponent(CONFIG.ip)}`)
   .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
   .then((data) => {
     if (data.online) {

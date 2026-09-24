@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SelyxCraft</title>
-  <meta name="description" content="SelyxCraft is a Minecraft survival server with land claims, player shops, creative plots and weekly events. Java and Bedrock.">
+  <meta name="description" content="SelyxCraft is a semi-anarchy Minecraft survival server with teams, PvP Practice and yearly seasons. Java and Bedrock.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Pixelify+Sans:wght@500;700&display=swap" rel="stylesheet">
@@ -34,7 +34,8 @@
         <li class="hide-sm"><a href="#modes">Modes</a></li>
         <li class="hide-sm"><a href="#join">Join</a></li>
         <li class="hide-sm"><a href="#staff">Staff</a></li>
-        <li class="hide-sm"><a href="#rules">Rules</a></li>
+        <li class="hide-sm"><a href="rules.html">Rules</a></li>
+        <li class="hide-sm"><a href="#faq">FAQ</a></li>
         <li class="hide-sm"><a data-store href="#">Store</a></li>
         <li><a data-discord href="#">Discord</a></li>
       </ul>
@@ -43,16 +44,21 @@
     <div class="hero wrap" id="top">
       <img class="hero-logo" src="assets/logo.webp" alt="SelyxCraft shield logo" width="1024" height="1024">
       <h1 class="title">Selyx<span>Craft</span></h1>
-      <p class="lede">Build a town with your friends, run a shop, dig to bedrock. Land claims keep what you build yours.</p>
+      <p class="lede">Team up, build, raid, and dig to bedrock. No land claims, so hide your base well.</p>
 
-      <div class="ip-row">
+      <div class="prelaunch" data-prelaunch>
+        <p class="prelaunch-tag"><span class="dot" aria-hidden="true"></span>Launching soon</p>
+        <a class="btn btn-gold" data-discord href="#">Get the IP on Discord</a>
+      </div>
+
+      <div class="ip-row" data-live hidden>
         <div class="ip" role="group" aria-label="Server address">
-          <code data-ip>play.selyxcraft.net</code>
+          <code data-ip>IP drops at launch</code>
           <button class="btn btn-diamond" data-copy type="button">Copy IP</button>
         </div>
         <p class="status" id="status"><span class="dot" aria-hidden="true"></span><span id="statusText">Checking server…</span></p>
       </div>
-      <p class="meta">Java &amp; Bedrock · 1.21 · No pay-to-win</p>
+      <p class="meta">Java &amp; Bedrock · <span data-version>26.2+</span> · <span data-season>Season 1</span> · No pay-to-win</p>
     </div>
   </header>
 
@@ -60,16 +66,17 @@
     <section class="layer" data-layer="dirt" data-stop="Grass &amp; dirt" data-y-from="64" data-y-to="56" id="modes">
       <div class="wrap">
         <p class="eyebrow">Y 64 · Surface</p>
-        <h2>Three ways to play</h2>
+        <h2>Two modes, more coming</h2>
         <div class="modes">
           <article class="mode">
             <canvas class="icon" data-icon="pick" width="10" height="10" aria-hidden="true"></canvas>
             <h3>Survival</h3>
-            <p>The main world. Claim land with a golden shovel, trade at the market, and team up in towns.</p>
+            <p>The main world. Team up with friends, build a base, and trade with other players. There are no land claims, so hiding your base is on you.</p>
             <ul class="facts">
-              <li>10,000 × 10,000 world</li>
-              <li>Player-run economy</li>
-              <li>Weekly resource world reset</li>
+              <li>1,000,000 × 1,000,000 world</li>
+              <li>Semi-anarchy, no land claims</li>
+              <li>PvP on, spawn is safe</li>
+              <li>World resets yearly each season</li>
             </ul>
           </article>
           <article class="mode">
@@ -99,12 +106,13 @@
       <div class="wrap">
         <p class="eyebrow">Y 32 · Stone</p>
         <h2>Join in under a minute</h2>
+        <p class="prelaunch-note" data-prelaunch>We're not live yet. The IP gets posted on Discord at launch, then these steps are all you need.</p>
         <div class="join">
           <div class="edition">
             <h3>Java Edition</h3>
             <ol class="steps">
-              <li><span>Open Minecraft 1.21 and choose <strong>Multiplayer</strong>.</span></li>
-              <li><span>Select <strong>Add Server</strong> and paste <code data-ip>play.selyxcraft.net</code></span></li>
+              <li><span>Open Minecraft <span data-version>26.2+</span> and choose <strong>Multiplayer</strong>.</span></li>
+              <li><span>Select <strong>Add Server</strong> and paste <code data-ip>IP drops at launch</code></span></li>
               <li><span>Join, then type <code>/rtp</code> to start somewhere fresh.</span></li>
             </ol>
           </div>
@@ -112,7 +120,7 @@
             <h3>Bedrock Edition</h3>
             <ol class="steps">
               <li><span>Open <strong>Play</strong>, then the <strong>Servers</strong> tab.</span></li>
-              <li><span>Select <strong>Add Server</strong>. Address <code data-ip>play.selyxcraft.net</code>, port <code data-port>19132</code></span></li>
+              <li><span>Select <strong>Add Server</strong>. Address <code data-ip>IP drops at launch</code>, port <code data-port>19132</code></span></li>
               <li><span>Join, then type <code>/rtp</code> to start somewhere fresh.</span></li>
             </ol>
           </div>
@@ -130,22 +138,72 @@
         <div>
           <p class="eyebrow">Y -32 · Deepslate</p>
           <h2>House rules</h2>
+          <p class="rules-lede">The short version. Staff go by the full rules.</p>
           <ul class="rules">
-            <li><strong>Don't grief or steal.</strong> Unclaimed doesn't mean unowned.</li>
-            <li><strong>No hacked clients or x-ray.</strong> Minimaps and performance mods are fine.</li>
-            <li><strong>Keep chat friendly.</strong> No slurs, spam, or advertising other servers.</li>
-            <li><strong>One account per person.</strong> Alts can't join events or vote.</li>
+            <li><strong>Respect everyone.</strong> No harassment, threats, or discrimination. Swearing is fine, just not at someone.</li>
+            <li><strong>No advertising.</strong> No other server IPs, Discord invites, or promo links.</li>
+            <li><strong>No cheats or exploits.</strong> Performance and visual mods only. Found a bug? Report it.</li>
+            <li><strong>Your account, your responsibility.</strong> No sharing or selling. Alts only for AFK farms and chunk loading.</li>
+            <li><strong>Keep chat 13+.</strong> No spam, NSFW, hate speech, or pointless pings.</li>
           </ul>
+          <a class="btn btn-diamond rules-link" href="rules.html">Read the full rules</a>
         </div>
         <div class="discord">
-          <h3>Questions, appeals, build contests</h3>
-          <p>It all happens on Discord. Staff answer tickets there, usually within a day.</p>
+          <h3>Tickets, appeals, bug reports, events</h3>
+          <p>Support tickets, ban and mute appeals, bug reports, events, suggestions and the YouTube channel all live on Discord. It's also where the community hangs out.</p>
           <p class="discord-count" id="discordCount" hidden></p>
           <div class="cta-row">
             <a class="btn btn-gold" data-discord href="#">Join the Discord</a>
             <a class="btn btn-diamond" data-store href="#">Visit the store</a>
           </div>
-          <p class="store-note">Store items are cosmetic. They never give a gameplay advantage.</p>
+          <p class="store-note">No pay-to-win. Nothing in the store will ever give a gameplay advantage.</p>
+        </div>
+      </div>
+
+      <div class="wrap faq" id="faq">
+        <p class="eyebrow">Y -48 · Deepslate</p>
+        <h2>FAQ</h2>
+        <div class="faq-list">
+          <details data-prelaunch>
+            <summary>When does SelyxCraft launch?</summary>
+            <p>Soon. The launch date and server IP get announced on <a data-discord href="#">Discord</a> first, so join there to catch it.</p>
+          </details>
+          <details>
+            <summary>What version do I need?</summary>
+            <p>Java Edition <span data-version>26.2+</span>. Bedrock Edition is supported too.</p>
+          </details>
+          <details>
+            <summary>Can I join with a cracked account?</summary>
+            <p>Yes. Cracked (non-premium) accounts are allowed.</p>
+          </details>
+          <details>
+            <summary>Are there land claims?</summary>
+            <p>No. Survival is semi-anarchy: raiding and stealing are part of the game, so hide your base well. Serious griefing is still punished, see <a href="rules.html#r1-4">rule 1.4</a>.</p>
+          </details>
+          <details>
+            <summary>Is PvP on?</summary>
+            <p>Yes, everywhere except spawn. Spawn is a safe zone.</p>
+          </details>
+          <details>
+            <summary>Which mods can I use?</summary>
+            <p>Performance and visual mods only, like Sodium, Iris, or shaders. Minimaps, x-ray, and anything else that gives an advantage are banned. Full list under <a href="rules.html#r4-1">rule 4.1</a>.</p>
+          </details>
+          <details>
+            <summary>Can I use alts?</summary>
+            <p>Only for AFK farms or keeping chunks loaded. Using an alt for anything else, including dodging a punishment, isn't allowed. See <a href="rules.html#r5">rule 5</a>.</p>
+          </details>
+          <details>
+            <summary>Does the world reset?</summary>
+            <p>Once a year, when a new season starts. The world and economy are wiped. Purchased ranks and cosmetics carry over.</p>
+          </details>
+          <details>
+            <summary>I got banned or muted. How do I appeal?</summary>
+            <p>Open a ticket on <a data-discord href="#">Discord</a>. Staff review every appeal, and their decision is final.</p>
+          </details>
+          <details>
+            <summary>I found a bug. What now?</summary>
+            <p>Report it on <a data-discord href="#">Discord</a> instead of using it. Abusing bugs is against <a href="rules.html#r4-6">rule 4.6</a>.</p>
+          </details>
         </div>
       </div>
     </section>
