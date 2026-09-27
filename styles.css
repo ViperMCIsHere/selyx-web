@@ -20,6 +20,7 @@
 
   --cell: calc(100vw / 96);
   --gutter: clamp(16px, 5vw, 64px);
+  --nav-h: 76px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -27,6 +28,7 @@
 [hidden] { display: none !important; }
 
 html { scroll-behavior: smooth; }
+html.js { scroll-padding-top: calc(var(--nav-h) + 12px); }
 
 body {
   margin: 0;
@@ -101,7 +103,21 @@ code {
 .nav {
   position: relative; z-index: 2;
   display: flex; align-items: center; justify-content: space-between;
-  padding-block: 22px;
+  min-height: var(--nav-h);
+}
+
+/* Pinned bar: transparent over the sky, solid once you dig into the layers. */
+.js .topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 30;
+  border-bottom: 3px solid transparent;
+  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.js .sky { padding-top: var(--nav-h); }
+.js .topbar[data-scrolled] {
+  background: rgba(22, 32, 46, 0.97);
+  border-bottom-color: #0d1117;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+  color: var(--cream);
 }
 .nav ul { display: flex; gap: clamp(14px, 3vw, 32px); list-style: none; margin: 0; padding: 0; }
 .nav a { font-weight: 600; text-decoration: none; }
@@ -423,13 +439,17 @@ code {
   .depth { display: none; }
 }
 @media (max-width: 560px) {
+  :root { --nav-h: 72px; }
   html:not(.js) .hide-sm { display: none; }
   .js .nav { flex-wrap: wrap; row-gap: 14px; }
   .js .nav-toggle { display: flex; }
   .js .nav ul { display: none; }
+  .js .nav[data-open] { padding-block: 14px; }
   .js .nav[data-open] ul {
     display: flex; flex-direction: column; gap: 0;
     flex-basis: 100%;
+    max-height: calc(100svh - var(--nav-h) - 24px);
+    overflow-y: auto;
     background: var(--ink);
     border: 3px solid #0d1117;
     box-shadow: 6px 6px 0 rgba(11, 42, 107, 0.35);
@@ -452,6 +472,6 @@ code {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .cloud, .status .dot, .prelaunch-tag .dot { animation: none !important; }
-  .nav-toggle span { transition: none; }
+  .nav-toggle span, .js .topbar { transition: none; }
   .btn { transition: none; }
 }

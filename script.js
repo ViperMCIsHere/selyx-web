@@ -358,11 +358,16 @@ function updateDepth() {
   marker.style.top = `${((Y_TOP - y) / (Y_TOP - Y_BOTTOM)) * 100}%`;
 }
 
+const topbar = document.querySelector(".topbar");
+function updateTopbar() {
+  if (topbar) topbar.toggleAttribute("data-scrolled", scrollY > 8);
+}
+
 let ticking = false;
 addEventListener("scroll", () => {
   if (ticking) return;
   ticking = true;
-  requestAnimationFrame(() => { updateDepth(); ticking = false; });
+  requestAnimationFrame(() => { updateDepth(); updateTopbar(); ticking = false; });
 }, { passive: true });
 
 let resizeTimer;
@@ -374,3 +379,4 @@ addEventListener("resize", () => {
 document.fonts.ready.then(() => { lastWidth = 0; paintAll(); updateDepth(); });
 paintAll();
 updateDepth();
+updateTopbar();
