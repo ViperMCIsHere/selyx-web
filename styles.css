@@ -109,6 +109,21 @@ code {
 .brand { display: flex; align-items: center; gap: 10px; font: 700 1.25rem var(--f-display); }
 .brand-logo { width: 30px; height: 30px; border: 2px solid var(--navy); }
 
+.nav-toggle {
+  display: none;
+  width: 44px; height: 44px;
+  padding: 0;
+  flex-direction: column; justify-content: center; align-items: center; gap: 5px;
+  background: var(--ink);
+  border: 3px solid #0d1117;
+  box-shadow: inset -3px -3px 0 rgba(0, 0, 0, 0.35), inset 3px 3px 0 rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+}
+.nav-toggle span { display: block; width: 20px; height: 3px; background: var(--cream); transition: transform 0.15s, opacity 0.15s; }
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
 .hero-logo {
   display: block;
   width: clamp(88px, 10vw, 132px); height: auto;
@@ -408,7 +423,24 @@ code {
   .depth { display: none; }
 }
 @media (max-width: 560px) {
-  .hide-sm { display: none; }
+  html:not(.js) .hide-sm { display: none; }
+  .js .nav { flex-wrap: wrap; row-gap: 14px; }
+  .js .nav-toggle { display: flex; }
+  .js .nav ul { display: none; }
+  .js .nav[data-open] ul {
+    display: flex; flex-direction: column; gap: 0;
+    flex-basis: 100%;
+    background: var(--ink);
+    border: 3px solid #0d1117;
+    box-shadow: 6px 6px 0 rgba(11, 42, 107, 0.35);
+  }
+  .js .nav ul li + li { border-top: 2px solid rgba(244, 238, 220, 0.12); }
+  .js .nav ul a {
+    display: flex; align-items: center;
+    min-height: 48px; padding: 0 16px;
+    color: var(--cream);
+  }
+  .js .nav ul a[aria-current="page"] { box-shadow: inset 4px 0 0 var(--diamond); color: var(--diamond); }
   .ip { width: 100%; }
   .ip code { flex: 1; padding: 0.85rem; font-size: 0.95rem; }
   .sun { top: 90px; right: 20px; }
@@ -420,5 +452,6 @@ code {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .cloud, .status .dot, .prelaunch-tag .dot { animation: none !important; }
+  .nav-toggle span { transition: none; }
   .btn { transition: none; }
 }

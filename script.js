@@ -243,6 +243,28 @@ document.querySelectorAll("[data-store]").forEach((el) => {
   el.textContent = "Store coming soon";
 });
 
+// ---------- Mobile menu ----------
+const nav = document.querySelector(".nav");
+const navToggle = nav?.querySelector(".nav-toggle");
+if (navToggle) {
+  const setOpen = (open) => {
+    nav.toggleAttribute("data-open", open);
+    navToggle.setAttribute("aria-expanded", open);
+    navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  };
+  navToggle.addEventListener("click", () => setOpen(!nav.hasAttribute("data-open")));
+  nav.querySelectorAll("ul a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && nav.hasAttribute("data-open")) {
+      setOpen(false);
+      navToggle.focus();
+    }
+  });
+  document.addEventListener("click", (e) => {
+    if (nav.hasAttribute("data-open") && !nav.contains(e.target)) setOpen(false);
+  });
+}
+
 // ---------- Staff ----------
 const staffList = document.getElementById("staffList");
 if (staffList) CONFIG.staff.forEach((s) => {

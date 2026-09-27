@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Pixelify+Sans:wght@500;700&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/logo.webp" type="image/webp">
   <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
   <a class="skip" href="#modes">Skip to content</a>
@@ -30,7 +31,8 @@
 
     <nav class="nav wrap" aria-label="Main">
       <a class="brand" href="#top"><img class="brand-logo" src="assets/logo.webp" alt="" width="28" height="28" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-block'}))">SelyxCraft</a>
-      <ul>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <ul id="navMenu">
         <li class="hide-sm"><a href="#modes">Modes</a></li>
         <li class="hide-sm"><a href="#join">Join</a></li>
         <li class="hide-sm"><a href="#staff">Staff</a></li>
